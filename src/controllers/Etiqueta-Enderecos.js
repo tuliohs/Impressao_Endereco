@@ -11,21 +11,21 @@ var {
 
 async function sendToPrinterEnderecos(endereco, descricao) {
     return new Promise((resolve, reject) => {
-       
+
         exec('fo016145@bhz-m-001348 documents % lpr -l label_03.zpl', (err, stdout, stderr) => {
-                 setTimeout(() =>  resolve(null), 1000);
+            setTimeout(() => resolve(null), 1000);
 
         });
     });
 
-  
+
 };
 
 
 // async function sendToPrinterEnderecos(endereco, descricao) {
 //     return nconst enderecosImpressos = [];
-const axios = require('axios');
-const CONSTANTS = require("../../constants.js");
+//const axios = require('axios');
+//const CONSTANTS = require("../../constants.js");
 var fs = require('fs');
 var {
     exec
@@ -36,14 +36,14 @@ var {
 
 async function sendToPrinterEnderecos(endereco, descricao) {
     return new Promise((resolve, reject) => {
-       
+
         exec('fo016145@bhz-m-001348 documents % lpr -l label_03.zpl', (err, stdout, stderr) => {
-                 setTimeout(() =>  resolve(null), 1000);
+            setTimeout(() => resolve(null), 1000);
 
         });
     });
 
-  
+
 };
 
 
@@ -79,8 +79,8 @@ module.exports = {
             let enderecos = res.data.filter(element => !enderecosImpressos.includes(element.Id));
 
             if (enderecos.length > 0) {
-              //  console.log(enderecos.length);
-              //  console.log(enderecos);
+                //  console.log(enderecos.length);
+                //  console.log(enderecos);
                 for (let i = 0; i < enderecos.length; i++) {
                     console.log(i);
                     if (!enderecosImpressos.includes(enderecos[i].Id)) {
@@ -91,11 +91,11 @@ module.exports = {
                         enderecosImpressos.push(enderecos[i].Id);
                         await axios.put(CONSTANTS.apiUrl + '/etiquetaendereco/' + enderecos[i].Codigo, {});
 
-                       
+
                     }
-                
+
                 }
-                
+
             } else {
                 console.log("Nenhuma Etiqueta de Endereço a imprimir...");
             }
